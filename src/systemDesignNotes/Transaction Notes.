@@ -1,0 +1,95 @@
+Transaction Notes
+
+## Spring `@Transactional` Annotation
+
+### 1. Transaction Management
+- In Spring, the `@Transactional` annotation is used to manage transactions within a Spring application.
+- Transactions are crucial for ensuring the consistency and integrity of data in a database.
+
+### 2. Key Attributes of `@Transactional`
+- The `@Transactional` annotation has several attributes that allow you to configure its behavior.
+
+#### Propagation
+- Propagation defines how the current method should behave concerning a transaction.
+  - `REQUIRED`: If a transaction exists, the method joins it; otherwise, a new transaction is created.
+  - `REQUIRES_NEW`: Always starts a new transaction.
+  - `SUPPORTS`: Joins an existing transaction if available; otherwise, runs non-transactionally.
+  - `NOT_SUPPORTED`: Executes non-transactionally, suspending any existing transaction.
+  - `NEVER`: Should not run within a transaction context; otherwise, it throws an exception.
+  - `MANDATORY`: Requires an existing transaction; otherwise, it throws an exception.
+
+#### Isolation
+Isolation levels in database transactions determine how concurrent transactions interact with each other. There are several isolation levels defined in the SQL standard, and databases may implement them slightly differently. Let's explore the four common isolation levels with examples:
+
+1. **Read Uncommitted**:
+   - In this isolation level, transactions can read uncommitted changes from other transactions.
+   - It offers the lowest level of isolation and provides the highest concurrency.
+
+   **Example**:
+   - Transaction A starts and updates a row with a value of 100 to 200.
+   - Transaction B, which runs concurrently, reads the same row before Transaction A commits. It will see the uncommitted value of 200.
+   - Transaction B might receive incorrect or inconsistent data due to uncommitted changes.
+
+2. **Read Committed**:
+   - In this isolation level, transactions can only read committed data. It prevents dirty reads.
+   - This level provides a higher level of data consistency than "Read Uncommitted."
+
+   **Example**:
+   - Transaction A starts and updates a row from 100 to 200.
+   - Transaction B, running concurrently, tries to read the same row but has to wait until Transaction A commits.
+   - Transaction B will see the committed value of 200, ensuring data consistency.
+
+3. **Repeatable Read**:
+   - This isolation level prevents non-repeatable reads, meaning that once a transaction reads a value, it will see the same value even if another transaction updates it.
+   - It still allows for phantom reads, where new rows can be inserted by other transactions.
+
+   **Example**:
+   - Transaction A starts and reads a row with a value of 100.
+   - Transaction B, running concurrently, updates the same row to 200 and commits.
+   - Transaction A reads the same row again, but it will still see the value as 100, ensuring consistency in its own context.
+
+4. **Serializable**:
+   - Serializable is the highest isolation level. It ensures complete data integrity by preventing any interference from other transactions.
+   - It avoids dirty reads, non-repeatable reads, and phantom reads.
+
+   **Example**:
+   - Transaction A starts and reads a row with a value of 100.
+   - Transaction B, running concurrently, tries to update the same row but is blocked by Transaction A.
+   - Transaction C, also running concurrently, tries to insert a new row with a condition based on the data Transaction A is reading. It is also blocked.
+   - Transaction A, after reading, continues without interference from Transactions B and C. Once it's committed, Transaction B and C can proceed.
+
+Each isolation level balances data consistency and system performance. You should select the appropriate level based on your application's requirements. Higher isolation levels (such as Serializable) provide stronger data integrity but may lead to increased contention and potentially slower performance due to blocking. Lower isolation levels (like Read Uncommitted) offer better performance but come at the cost of data consistency.
+
+#### Rollback
+- `@Transactional` can control transaction rollback behavior.
+  - `rollbackFor` and `noRollbackFor`: Specify exceptions for which the transaction should (or should not) be rolled back.
+  - `rollbackForClassName` and `noRollbackForClassName`: Use class names to specify rollback behavior for exceptions.
+
+### 3. Additional Features
+- Besides the core attributes, the `@Transactional` annotation provides additional features for more advanced transaction management:
+
+#### Timeout
+- `timeout`: Defines the maximum time (in seconds) a transaction can run before it times out and is rolled back automatically.
+
+#### ReadOnly
+- `readOnly`: Specifies whether a transaction is read-only. If set to `true`, the transaction will be optimized for read-only operations.
+
+#### Propagation through Multiple Layers
+- Transactions can propagate through multiple layers of method calls, with each method's transactional behavior being determined by its own `@Transactional` annotation.
+
+#### Nested Transactions
+- Spring supports nested transactions when using the `@Transactional` annotation with `REQUIRES_NEW` propagation. Inner transactions can commit or roll back independently of outer transactions.
+
+#### AOP Proxying
+- `@Transactional` relies on AOP (Aspect-Oriented Programming) proxying. Ensure that the class with the `@Transactional` method is a Spring bean for the annotation to work as expected.
+
+### 4. Use Cases
+- Use `@Transactional` for methods that require database transactions, ensuring data consistency and integrity.
+- Configure propagation, isolation, rollback rules, and other attributes to meet the specific requirements of your application.
+
+### 5. Best Practices
+- Carefully choose propagation and isolation levels to balance data integrity and performance.
+- Use the `rollbackFor` attribute to specify exceptions that should trigger a rollback.
+- Be aware of the performance implications of transactions, especially when using higher isolation levels.
+
+Spring's `@Transactional` annotation provides powerful and flexible means to manage transactions within your application, allowing you to configure transactional behavior to suit your specific needs.
