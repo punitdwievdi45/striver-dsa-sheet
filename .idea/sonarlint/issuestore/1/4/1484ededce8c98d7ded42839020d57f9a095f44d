@@ -1,0 +1,10 @@
+
+k
+java:S1197	"*Move the array designators [] to the type.(ìÌ™ÒúÿÿÿÿJ$8e10e8e5-2ce2-434f-9e52-237fcd9e4a19
+k	java:S106"+Replace this use of System.out by a logger.(ô†³ÛşÿÿÿÿJ$01f357b8-6e87-4702-805d-c8c633daa4f2
+e	java:S106"+Replace this use of System.out by a logger.(øÃÑJ$77359300-30ea-492b-a8d1-a0866782d095
+	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò‹”¹ıÿÿÿÿJ$3d15b169-37ca-457d-8e0c-435509efcd3f
+f	java:S106"+Replace this use of System.out by a logger.(Ç¡„J$853cddc2-9650-4750-bbcd-6eb43ac9cda8
+	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊşåÿÿÿÿÿJ$03909150-3837-400d-8004-6d8ceb9b506b
+k	java:S106)"+Replace this use of System.out by a logger.(½¾…ÈıÿÿÿÿJ$5bca815a-e46a-4135-8259-b6ae7b5b91b0
+‰	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØĞËšJ$5d529546-0a9b-4bb5-a604-205064ab9bf5

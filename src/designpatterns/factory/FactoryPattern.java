@@ -21,8 +21,10 @@ Cleaner Code: Creation logic is centralized and hidden, making code easier to un
 of subclasses based on input and requirement. Then we create a factory class  which takes
 the reaponsibility of creating object of class based on input.*/
 
-public class Main {
+public class FactoryPattern {
+
     public static void main(String[] args) {
+
         Employee employee1 = EmployeeFactory.getInstance("Android Developer");
         if (employee1 instanceof AndroidDeveloper) {
             System.out.println("Android Developer salary is : " + employee1.salary());
@@ -31,5 +33,8 @@ public class Main {
         if (employee2 instanceof IosDeveloper) {
             System.out.println("IOS Developer salary is :" + employee2.salary());
         }
+
+        Employee employee3 = EmployeeFactory.getInstance("Web Developer");
+        System.out.println("Web Developer salary is :" + employee3.salary());
     }
 }

@@ -1,0 +1,6 @@
+
+@
+java:S1197"*Move the array designators [] to the type.(Õ¶Òö
+@	java:S106"+Replace this use of System.out by a logger.(ÎçÈí
+M
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ

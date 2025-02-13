@@ -1,0 +1,15 @@
+
+‘	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö‡…İûÿÿÿÿJ$3e0ff71e-926a-479d-bf62-34d6013374a2
+¦
+java:S4165"eRemove this useless assignment; "largest" already holds the assigned value along all execution paths.(½Ø¼¯şÿÿÿÿJ$0d8a48b0-0e74-4146-b74f-0ba2b1a9581d
+v
+java:S1854"5Remove this useless assignment to local variable "N".(Ö‡…İûÿÿÿÿJ$9364a2d2-c464-4289-8246-b605108ae195
+k
+java:S1197"*Move the array designators [] to the type.(™İ‘ÏùÿÿÿÿJ$e00d0d40-0a1a-4a23-9f3d-14630000f24e
+g
+java:S1481"&Remove this unused "N" local variable.(Ö‡…İûÿÿÿÿJ$40185098-9411-4d12-99cb-6df580ca1107
+f	java:S106"+Replace this use of System.out by a logger.(§‘éJ$433e5c1d-86f4-4cbd-90b5-9f11e5b5ec6f
+w	java:S125"<This block of commented-out lines of code should be removed.(Ë­‘ÌJ$ea44bad9-b9bc-4cd7-bd9b-ba1154cb285d
+f	java:S106"+Replace this use of System.out by a logger.(Ù©È±J$707431e9-1e73-4c37-8171-8947e129432d
+|
+java:S1854";Remove this useless assignment to local variable "largest".(Ğ…ñšıÿÿÿÿJ$f13078d0-5afb-4ca5-8167-cc44febec682
